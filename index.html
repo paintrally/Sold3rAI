@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sold3r AI</title>
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f7f3;
+    margin: 0;
+    padding: 40px 20px;
+    color: #333;
+}
+
+.container {
+    max-width: 900px;
+    margin: auto;
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+h1 { text-align: center; color: #556b2f; }
+h2 { color: #556b2f; }
+
+.box {
+    background: #f9f9f9;
+    border-left: 5px solid #556b2f;
+    padding: 15px;
+    border-radius: 8px;
+    margin-top: 10px;
+}
+
+hr {
+    border: none;
+    height: 3px;
+    background: #556b2f;
+    margin: 20px 0;
+}
+
+/* AI BUTTON */
+#aiButton {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    background: #556b2f;
+    color: white;
+    border: none;
+    border-radius: 50px;
+    padding: 14px 20px;
+    cursor: pointer;
+}
+
+/* MODAL */
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.5);
+}
+
+.modal-content {
+    background: white;
+    width: 90%;
+    max-width: 520px;
+    height: 600px;
+    margin: 40px auto;
+    padding: 15px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.close {
+    cursor: pointer;
+    font-size: 22px;
+    position: absolute;
+    right: 20px;
+    top: 15px;
+}
+
+/* CHAT */
+#chatArea {
+    flex: 1;
+    overflow-y: auto;
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 8px;
+    margin: 10px 0;
+    background: #fff;
+}
+
+#userInput {
+    padding: 10px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+button {
+    margin-top: 5px;
+    padding: 10px;
+    cursor: pointer;
+    background: #556b2f;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+.personality {
+    display: flex;
+    gap: 5px;
+    margin: 5px 0;
+}
+
+.personality button {
+    flex: 1;
+    font-size: 12px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Sold3r</h1>
+<hr>
+
+<section>
+<h2>Introduction</h2>
+<div class="box">
+Soldering is a useful skill. It allows you to create strong electronic connections using molten metal (solder). 
+When done correctly, it creates reliable electrical joints used in almost all electronics.
+</div>
+</section>
+
+<section>
+<h2>Tools Required</h2>
+<div class="box">
+Soldering does not need the most expensive equipment. A basic setup includes:
+
+<ul>
+<li>Soldering iron</li>
+<li>Solder (lead-free recommended)</li>
+<li>Soldering iron stand</li>
+<li>Flux (helps solder flow properly)</li>
+</ul>
+
+Optional but very useful tools:
+<ul>
+<li>Solder wick (removes excess solder)</li>
+<li>Solder sucker (desoldering pump)</li>
+<li>Helping hands clamp</li>
+<li>Brass wool or sponge for cleaning the iron tip</li>
+</ul>
+
+Beginner kits are widely available and often inexpensive, making it easy to get started quickly. A good option if you would like to get started is <a href="https://www.amazon.co.uk/Soldering-Adjustable-Temperature-180-520%C2%B0C-Desoldering/dp/B0FWJ2K4CN/ref=sr_1_3_sspa?crid=30BXK3461IDUQ&dib=eyJ2IjoiMSJ9.50jSSzi6o_qXYQpovspqP0MsbWqgTJUfqQTjFDDXX24pMNREDcmpwlPbUCplMn5jk6c4p72cNSpwbqiHD1i1WCAKWbBa8NjN2ccF9LfNtEal0QGYUGM7AyGxMrexDr6GAF7WQFYWMrMqHZBE5sYIXiFjgv5wVGA035L_NkfbPTmN1O38N5L8pHQWwVZ5tWWOk623QpoxgGbB5uWeeDw-bLxSozn57iWcxKcST6guwBaiMXA8NGPah3MR7kcRtjwagV7VofYeuA_mABqENS5moq9sGC_4nxzve4ENRTWZ1hA.BlTQtfmpFX28lyxfJs0Cw0ZsxniZ0uRByPB8wR_JAVM&dib_tag=se&keywords=soldering%2Biron%2Bkit&qid=1782320051&sprefix=soldering%2Caps%2C183&sr=8-3-spons&aref=yfWiKUeJNG&sp_csd=d2lkZ2V0TmFtZT1zcF9hdGY&th=1">this kit</a> on Amazon, which retails for £13.69 (for my American friends, $18.03). 
+</div>
+</section>
+
+<section>
+<h2>Safety</h2>
+<div class="box">
+Safety is very important when soldering.
+
+<ul>
+<li>Always work in a well-ventilated area to avoid inhaling fumes</li>
+<li>The soldering iron tip gets extremely hot (around 300°C+)</li>
+<li>Never touch the metal tip while powered</li>
+<li>Always return the iron to its stand when not in use</li>
+<li>Wear safety glasses to protect from solder splashes</li>
+<li>Wash hands after handling solder or electronics</li>
+<li>Avoid eating or drinking near soldering areas</li>
+</ul>
+
+Soldering is safe when done carefully, but careless handling can cause burns or injury.
+</div>
+</section>
+
+<section>
+<h2>Basic Steps</h2>
+<div class="box">
+<ol>
+<li>Prepare your workspace and tools</li>
+<li>Heat the soldering iron</li>
+<li>Clean the iron tip</li>
+<li>Place the component in position</li>
+<li>Heat both pad and wire together</li>
+<li>Apply solder to the joint (not the iron)</li>
+<li>Let it cool naturally without movement</li>
+<li>Inspect the joint for a shiny, solid connection</li>
+</ol>
+</div>
+</section>
+
+<section>
+<h2>Troubleshooting</h2>
+<div class="box">
+Common issues include:
+
+<ul>
+<li>Cold joints (dull, weak connections)</li>
+<li>Not enough heat</li>
+<li>Dirty or oxidised surfaces</li>
+<li>Too much solder applied</li>
+<li>Moving parts while solder cools</li>
+</ul>
+
+Fixes:
+<ul>
+<li>Reheat and reflow the joint</li>
+<li>Clean surfaces before soldering</li>
+<li>Use flux to improve flow</li>
+<li>Keep components steady while cooling</li>
+</ul>
+</div>
+</section>
+
+</div>
+
+<!-- AI BUTTON -->
+<button id="aiButton">🤖 AI Assistant</button>
+
+<!-- MODAL -->
+<div id="aiWindow" class="modal">
+<div class="modal-content">
+
+<span class="close">&times;</span>
+
+<h3>Soldering AI Assistant</h3>
+
+<p><b>Model:</b> ~700MB offline AI (Llama-3.2-1B-Instruct-q4f32-MLC)</p>
+<p><b>Note:</b> Be mindful of data usage when downloading.</p>
+
+<button id="downloadAI">⬇ Download AI</button>
+
+<center><p><b>Personality:</b></p></center>
+
+<div class="personality">
+<button onclick="setMode('beginner')">Beginner</button>
+<button onclick="setMode('expert')">Expert</button>
+<button onclick="setMode('safety')">Safety</button>
+</div>
+
+<div id="chatArea"></div>
+
+<input id="userInput" placeholder="Ask something...">
+<button onclick="sendMessage()">Send</button>
+
+</div>
+</div>
+
+<script type="module">
+import { CreateMLCEngine, prebuiltAppConfig } 
+from "https://cdn.jsdelivr.net/npm/@mlc-ai/web-llm/+esm";
+
+let engine = null;
+let modelLoaded = false;
+let chatHistory = [];
+
+const chat = document.getElementById("chatArea");
+
+let SYSTEM_PROMPT = `
+You are a helpful soldering assistant.
+Explain clearly and simply.
+Focus on electronics, safety, and beginner-friendly learning.
+`;
+
+window.setMode = function(mode) {
+    if (mode === "beginner") {
+        SYSTEM_PROMPT = "You are a beginner soldering tutor. Explain simply step-by-step.";
+    }
+    if (mode === "expert") {
+        SYSTEM_PROMPT = "You are an expert electronics engineer. Be technical and precise.";
+    }
+    if (mode === "safety") {
+        SYSTEM_PROMPT = "You only focus on soldering safety and risks.";
+    }
+
+    chat.innerHTML += `<p><i>Mode set to ${mode}</i></p>`;
+};
+
+document.getElementById("downloadAI").onclick = async function () {
+    if (modelLoaded) return;
+
+    chat.innerHTML += "<p><i>Downloading AI (~700MB)...</i></p>";
+
+    try {
+        const model = prebuiltAppConfig.model_list[0].model_id;
+
+        engine = await CreateMLCEngine(model, {
+            appConfig: prebuiltAppConfig,
+            initProgressCallback: (p) => console.log(p.text)
+        });
+
+        modelLoaded = true;
+        chat.innerHTML += "<p><i>AI ready ✔</i></p>";
+
+    } catch (err) {
+        chat.innerHTML += `<p style="color:red;">Failed: ${err.message}</p>`;
+    }
+};
+
+window.sendMessage = async function () {
+    const input = document.getElementById("userInput");
+    const text = input.value;
+    input.value = "";
+
+    if (!text.trim()) return;
+
+    chatHistory.push({ role: "user", content: text });
+
+    chat.innerHTML += `<p><b>You:</b> ${text}</p>`;
+    chat.innerHTML += `<p class="thinking"><i>AI is thinking...</i></p>`;
+
+    try {
+        if (!engine) throw new Error("Download AI first");
+
+        const messages = [
+            { role: "system", content: SYSTEM_PROMPT },
+            ...chatHistory
+        ];
+
+        const res = await engine.chat.completions.create({ messages });
+
+        const reply = res.choices[0].message.content;
+
+        chatHistory.push({ role: "assistant", content: reply });
+
+        const thinking = chat.querySelector(".thinking");
+        if (thinking) {
+            thinking.innerHTML = `<b>AI:</b> ${reply}`;
+            thinking.classList.remove("thinking");
+        }
+
+        chat.scrollTop = chat.scrollHeight;
+
+    } catch (err) {
+        chat.innerHTML += `<p style="color:red;">Error: ${err.message}</p>`;
+    }
+};
+
+document.getElementById("userInput").addEventListener("keydown", (e) => {
+    if (e.key === "Enter") sendMessage();
+});
+
+const button = document.getElementById("aiButton");
+const modal = document.getElementById("aiWindow");
+const closeBtn = document.querySelector(".close");
+
+button.onclick = () => modal.style.display = "block";
+closeBtn.onclick = () => modal.style.display = "none";
+
+window.onclick = (e) => {
+    if (e.target === modal) modal.style.display = "none";
+};
+</script>
+
+</body>
+</html>
