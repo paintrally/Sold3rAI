@@ -54,7 +54,7 @@ There are a lot of things I'd like to add in the future, including:
 
 Either go to https://paintrally.github.io/Sold3rAI/ or clone the repo using the command below
 ```bash
-git clone https://github.com/yourusername/Sold3rAI.git
+git clone https://github.com/paintrally/Sold3rAI.git
 ```
 Then open the project in your browser or run it using a local development server.
 
