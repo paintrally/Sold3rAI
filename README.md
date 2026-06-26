@@ -2,16 +2,13 @@
 
 Sold3rAI is a website that teaches people how to solder and includes a built-in AI assistant that can answer questions while you learn.
 
-I originally made this project because a lot of soldering tutorials either assume you already know the basics or don't explain *why* something went wrong. If you've ever ended up with a cold joint, bridged two pins together, or accidentally used way too much solder, you know how frustrating it can be.
-
-The goal of Sold3rAI is to make learning soldering a bit easier by combining tutorials with an AI that runs directly in your browser. Instead of searching through forum posts or watching multiple videos, you can ask questions and get help immediately.
+I made this for Macando by Hack Club, to save up for a new soldering iron, the PineCil, by Pine64.
 
 ## What it does
-
-* Explains soldering fundamentals
+* It explains soldering fundamentals
 * Helps beginners understand common mistakes
 * Includes an AI assistant for soldering-related questions
-* Runs entirely in the browser
+* Runs entirely in the broswer
 * Provides guidance while you learn
 
 ## Why I made it
@@ -33,13 +30,6 @@ Watch the project here:
 
 https://paintrally.github.io/Sold3rAI/video.mp4
 
-## Built With
-
-* HTML
-* CSS
-* JavaScript
-* Browser-based AI
-
 ## Future Ideas
 
 There are a lot of things I'd like to add in the future, including:
@@ -52,12 +42,4 @@ There are a lot of things I'd like to add in the future, including:
 
 ## Opening the page
 
-Either go to https://paintrally.github.io/Sold3rAI/ or clone the repo using the command below
-```bash
-git clone https://github.com/paintrally/Sold3rAI.git
-```
-Then open the project in your browser or run it using a local development server.
-
-## Contributing
-
-If you find a bug or have an idea for a feature, feel free to open an issue or submit a pull request.
+Go to https://paintrally.github.io/Sold3rAI/
